@@ -4,7 +4,7 @@ import com.epam.engx.jam.task2.MergeSort;
 
 import java.util.concurrent.ForkJoinPool;
 
-public class ParallelSortImpl implements MergeSort {
+public class ParallelMergeSortImpl implements MergeSort {
 
     @Override
     public void accept(int[] ints) {
