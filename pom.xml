@@ -13,12 +13,27 @@
     <groupId>com.epam.engx</groupId>
     <artifactId>jam</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>jam</name>
-    <description>Advanced Multithreading</description>
+
+    <name>Advanced Multithreading</name>
+    <description>Java Advanced Multithreading.</description>
+    <inceptionYear>2023</inceptionYear>
+    <url>https://github.com/rabestro/advanced-multithreading-course</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <distribution>repo</distribution>
+            <comments>
+                A short and simple permissive license with conditions only
+                requiring preservation of copyright and license notices.
+            </comments>
+            <url>https://github.com/rabestro/advanced-multithreading-course/blob/main/LICENSE</url>
+        </license>
+    </licenses>
 
     <properties>
         <java.version>17</java.version>
-        <spring-shell.version>3.0.0</spring-shell.version>
+        <spring-shell.version>3.0.1</spring-shell.version>
     </properties>
 
     <dependencies>
@@ -50,8 +65,38 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${project.parent.version}</version>
             </plugin>
         </plugins>
     </build>
+
+    <organization>
+        <name>EPAM Systems</name>
+        <url>https://www.epam.com</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>rabestro</id>
+            <name>Jegors Čemisovs</name>
+            <email>jegors_cemisovs@epam.com</email>
+            <url>https://github.com/rabestro</url>
+            <roles>
+                <role>mentee</role>
+            </roles>
+            <timezone>Europe/Riga</timezone>
+        </developer>
+    </developers>
+
+    <contributors>
+        <contributor>
+            <name>Anatol Bludau</name>
+            <url>https://github.com/Ti-Bi</url>
+            <roles>
+                <role>mentor</role>
+            </roles>
+            <timezone>Europe/Vilnius</timezone>
+        </contributor>
+    </contributors>
 
 </project>
