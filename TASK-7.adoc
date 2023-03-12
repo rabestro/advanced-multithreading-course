@@ -1,0 +1,12 @@
+== Java Tutorials Code Sample – ForkBlur.java
+
+```text
+Source image: red-tulips.jpg
+Array size is 2795520
+Threshold is 10000
+8 processors are available
+Image blur took 45 milliseconds.
+Output image: blurred-tulips.jpg
+
+Process finished with exit code 0
+```
