@@ -1,0 +1,10 @@
+= Task 6
+
+== RecursiveTask
+
+1. Give example from RecursiveTask javadoc.
+2. Write FibonacciTask that implements RecursiveTask.
+3. Apply suggestion from javadoc to check minimum granularity size less or equal 10.
+And in that case use linear algorithm.
+4. Using unit test check that your code works correctly:
+assertEquals(1134903170L, new ForkJoinPool().invoke(new FibonacciTask(45)).longValue());

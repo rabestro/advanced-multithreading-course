@@ -1,4 +1,4 @@
-package com.epam.engx.jam;
+package com.epam.engx.jam.command;
 
 import com.epam.engx.jam.task2.MergeSort;
 import com.epam.engx.jam.task2.impl.MergeSortImpl;
