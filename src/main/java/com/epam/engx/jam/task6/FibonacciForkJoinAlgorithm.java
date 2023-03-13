@@ -3,21 +3,15 @@ package com.epam.engx.jam.task6;
 import java.math.BigInteger;
 import java.util.concurrent.RecursiveTask;
 
-public final class FibonacciForkJoinAlgorithm implements FibonacciAlgorithm {
+public record FibonacciForkJoinAlgorithm(int granularitySize) implements FibonacciAlgorithm {
     private static final FibonacciAlgorithm linear = new FibonacciLinearAlgorithm();
-
-    final int granularitySize;
-
-    public FibonacciForkJoinAlgorithm(int n) {
-        this.granularitySize = n;
-    }
 
     @Override
     public BigInteger apply(int number) {
         return new FibonacciTask(number).compute();
     }
 
-    final class FibonacciTask extends RecursiveTask<BigInteger> {
+    private final class FibonacciTask extends RecursiveTask<BigInteger> {
         final int n;
 
         FibonacciTask(int n) {

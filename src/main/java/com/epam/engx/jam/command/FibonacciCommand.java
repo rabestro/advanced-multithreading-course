@@ -11,11 +11,11 @@ import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 
 @ShellComponent
-public class FibonacciCommand {
+public record FibonacciCommand(FibonacciLinearAlgorithm linearAlgorithm) {
 
     @ShellMethod("Fibonacci sequence by linear algorithm")
     public String fib(int number) {
-        return calculate(new FibonacciLinearAlgorithm(), number);
+        return calculate(linearAlgorithm, number);
     }
 
     @ShellMethod("Fibonacci sequence by ForkJoin algorithm")

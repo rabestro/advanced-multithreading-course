@@ -31,11 +31,11 @@ package com.epam.engx.jam.task7;
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
-import javax.imageio.ImageIO;
 
 /**
  * ForkBlur implements a simple horizontal image blur. It averages pixels in the
@@ -127,7 +127,7 @@ public class ForkBlur extends RecursiveAction {
         System.out.println("Threshold is " + sThreshold);
 
         int processors = Runtime.getRuntime().availableProcessors();
-        System.out.println(Integer.toString(processors) + " processor"
+        System.out.println(processors + " processor"
                            + (processors != 1 ? "s are " : " is ")
                            + "available");
 

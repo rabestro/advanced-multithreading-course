@@ -1,7 +1,10 @@
 package com.epam.engx.jam.task6;
 
+import org.springframework.stereotype.Component;
+
 import java.math.BigInteger;
 
+@Component
 public final class FibonacciLinearAlgorithm implements FibonacciAlgorithm {
 
     @Override
