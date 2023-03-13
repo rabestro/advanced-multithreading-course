@@ -8,3 +8,10 @@
 And in that case use linear algorithm.
 4. Using unit test check that your code works correctly:
 assertEquals(1134903170L, new ForkJoinPool().invoke(new FibonacciTask(45)).longValue());
+
+== RecursiveAction
+Sum of double squares
+1. Give last example from RecursiveAction javadoc about calculation of sum of squares in double[] array.
+2. Use double array of half-billion size 500_000_000 filled by random doubles.
+3. Compare speed with direct linear calculation (you may use Stream API as well):
+double sum = 0; for (double v : ARRAY) { sum += v * v; }

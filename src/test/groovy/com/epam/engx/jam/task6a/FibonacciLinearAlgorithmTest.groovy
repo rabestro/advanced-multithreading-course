@@ -1,4 +1,4 @@
-package com.epam.engx.jam.task6
+package com.epam.engx.jam.task6a
 
 
 import spock.lang.Specification

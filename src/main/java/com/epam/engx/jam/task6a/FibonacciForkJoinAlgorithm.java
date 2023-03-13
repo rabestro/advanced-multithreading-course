@@ -1,4 +1,4 @@
-package com.epam.engx.jam.task6;
+package com.epam.engx.jam.task6a;
 
 import java.math.BigInteger;
 import java.util.concurrent.RecursiveTask;

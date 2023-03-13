@@ -1,8 +1,8 @@
 package com.epam.engx.jam.command;
 
-import com.epam.engx.jam.task6.FibonacciAlgorithm;
-import com.epam.engx.jam.task6.FibonacciForkJoinAlgorithm;
-import com.epam.engx.jam.task6.FibonacciLinearAlgorithm;
+import com.epam.engx.jam.task6a.FibonacciAlgorithm;
+import com.epam.engx.jam.task6a.FibonacciForkJoinAlgorithm;
+import com.epam.engx.jam.task6a.FibonacciLinearAlgorithm;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
