@@ -4,8 +4,10 @@ import java.util.concurrent.RecursiveAction;
 
 public final class Applyer extends RecursiveAction {
     final double[] array;
-    final int lo, hi;
+    final int lo;
+    final int hi;
     double result;
+
     Applyer next; // keeps track of right-hand-side tasks
 
     Applyer(double[] array, int lo, int hi, Applyer next) {
