@@ -14,7 +14,7 @@ public record FibonacciForkJoinAlgorithm(int granularitySize) implements Fibonac
     private final class FibonacciTask extends RecursiveTask<BigInteger> {
         final int n;
 
-        FibonacciTask(int n) {
+        private FibonacciTask(int n) {
             this.n = n;
         }
 
