@@ -1,5 +1,7 @@
 package com.epam.engx.jam.task1;
 
+import jakarta.validation.constraints.Min;
+
 import java.math.BigInteger;
 import java.util.stream.IntStream;
 
@@ -7,7 +9,7 @@ abstract class AbstractFactorialAlgorithm implements FactorialFunction {
     abstract BigInteger factorialFromTwo(int number);
 
     @Override
-    public BigInteger apply(int value) {
+    public BigInteger apply(@Min(0) int value) {
         validate(value);
         if (value < 2) {
             return BigInteger.ONE;
@@ -17,7 +19,7 @@ abstract class AbstractFactorialAlgorithm implements FactorialFunction {
 
     void validate(int number) {
         if (number < 0) {
-            throw new IllegalArgumentException("the factorial is defined for non-negative numbers only!");
+            throw new IllegalArgumentException("the factorial is defined only for non-negative numbers");
         }
     }
 

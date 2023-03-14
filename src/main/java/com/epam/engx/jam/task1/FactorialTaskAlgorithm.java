@@ -39,5 +39,4 @@ public final class FactorialTaskAlgorithm extends AbstractFactorialAlgorithm {
             return right.compute().multiply(left.join());
         }
     }
-
 }

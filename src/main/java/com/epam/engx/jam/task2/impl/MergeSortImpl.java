@@ -1,8 +1,10 @@
 package com.epam.engx.jam.task2.impl;
 
 import com.epam.engx.jam.task2.MergeSort;
+import org.springframework.stereotype.Component;
 
-public class MergeSortImpl implements MergeSort {
+@Component
+public final class MergeSortImpl implements MergeSort {
 
     @Override
     public void accept(int[] ints) {

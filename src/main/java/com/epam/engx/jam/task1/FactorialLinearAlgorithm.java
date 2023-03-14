@@ -9,6 +9,6 @@ public final class FactorialLinearAlgorithm extends AbstractFactorialAlgorithm {
 
     @Override
     public BigInteger factorialFromTwo(int number) {
-        return AbstractFactorialAlgorithm.computeDirectly(2, number);
+        return computeDirectly(2, number);
     }
 }
