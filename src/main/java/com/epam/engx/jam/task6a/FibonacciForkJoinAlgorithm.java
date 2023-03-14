@@ -1,9 +1,13 @@
 package com.epam.engx.jam.task6a;
 
+import org.springframework.stereotype.Component;
+
 import java.math.BigInteger;
 import java.util.concurrent.RecursiveTask;
 
-public record FibonacciForkJoinAlgorithm(int granularitySize) implements FibonacciAlgorithm {
+@Component
+public final class FibonacciForkJoinAlgorithm implements FibonacciAlgorithm {
+    private static final int THRESHOLD = 10;
     private static final FibonacciAlgorithm linear = new FibonacciLinearAlgorithm();
 
     @Override
@@ -20,7 +24,7 @@ public record FibonacciForkJoinAlgorithm(int granularitySize) implements Fibonac
 
         @Override
         protected BigInteger compute() {
-            if (n <= granularitySize) {
+            if (n <= THRESHOLD) {
                 return linear.apply(n);
             }
             var f1 = new FibonacciTask(n - 1);
