@@ -1,0 +1,62 @@
+= Advanced Multithreading
+
+== Topics:
+
+- Java Multithreading mechanics
+- Thread pools
+- ForkJoin, Atomics
+- Reactive approach with CompletableFuture
+
+== How to run application
+
+[source,shell]
+----
+mvn spring-boot:run
+----
+
+== Available commands
+
+[source,text]
+----
+shell:>help
+AVAILABLE COMMANDS
+
+Built-In Commands
+help: Display help about available commands
+stacktrace: Display the full stacktrace of the last error.
+clear: Clear the shell screen.
+quit, exit: Exit the shell.
+history: Display or save the history of previously run commands
+version: Show version info
+script: Read and execute commands from a file.
+
+Factorial Command
+factorial-parallel: Factorial calculation using parallel stream
+factorial-task: Factorial calculation using class RecursiveTask
+factorial-action: Factorial calculation using class RecursiveAction
+factorial: Factorial of non-negative integer by linear algorithm
+
+Fibonacci Command
+fibonacci: Fibonacci sequence by linear algorithm
+fibonacci-task: Fibonacci sequence by ForkJoin algorithm
+
+Merge Sort Command
+* sort: Sorts an array of integers by single thread algorithm
+* sort-action: Sorts an array of integers by using class RecursiveAction
+prepare-ints: Prepare array filled by random integers
+
+Prod Cons Command
+prodcons:
+
+Scan Command
+scan: Scans a specified folder and provides detailed statistics
+
+Sum Of Squares Command
+prepare-doubles: Prepare array filled by random doubles
+* squares: Calculate sum of squares in double[] array by direct linear algorithm
+* squares-action: Calculate sum of squares in double[] array by using RecursiveAction
+
+
+Commands marked with (*) are currently unavailable.
+Type `help <command>` to learn more.
+----
