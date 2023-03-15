@@ -1,7 +1,11 @@
 package com.epam.engx.jam.aspect;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +31,7 @@ public final class BenchmarkAspect {
 
     @Before("shellMethod()")
     public void beforeCommand(JoinPoint joinPoint) {
-        LOG.log(INFO, commandStart(joinPoint));
+        LOG.log(INFO, commandWithArgs(joinPoint));
         executionStart = ZonedDateTime.now();
     }
 
@@ -49,7 +53,7 @@ public final class BenchmarkAspect {
         return signature.getMethod().getName();
     }
 
-    private Supplier<String> commandStart(JoinPoint joinPoint) {
+    private Supplier<String> commandWithArgs(JoinPoint joinPoint) {
         var parameters = Arrays.stream(joinPoint.getArgs())
             .map(Object::toString)
             .collect(joining(", ", "(", ")"));

@@ -10,18 +10,19 @@ import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Getter
 public final class CustomFileVisitor implements FileVisitor<Path> {
     private final Map<String, Long> fileTypes = new HashMap<>();
-    private long fileCount;
+    private final AtomicLong fileCount = new AtomicLong(0);
     private long folderCount;
     private long totalSize;
 
     @Override
     public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) {
         ++folderCount;
-        return FileVisitResult.CONTINUE;
+        return visitResult();
     }
 
     @Override
@@ -31,15 +32,22 @@ public final class CustomFileVisitor implements FileVisitor<Path> {
 
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-        ++fileCount;
+        fileCount.getAndIncrement();
         totalSize += attrs.size();
         var fileType = Files.probeContentType(file);
         fileTypes.merge(fileType, 1L, Long::sum);
-        return FileVisitResult.CONTINUE;
+
+        return visitResult();
     }
 
     @Override
     public FileVisitResult visitFileFailed(Path file, IOException exc) {
-        return FileVisitResult.CONTINUE;
+        return visitResult();
+    }
+
+    private FileVisitResult visitResult() {
+        return Thread.currentThread().isInterrupted()
+            ? FileVisitResult.TERMINATE
+            : FileVisitResult.CONTINUE;
     }
 }

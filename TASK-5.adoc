@@ -1,0 +1,10 @@
+= Task 5 (prodcons module)
+
+Solve producer–consumer problem
+
+Cost: 1 points.
+
+Using:
+
+1. Semaphore
+2. BlockingQueue

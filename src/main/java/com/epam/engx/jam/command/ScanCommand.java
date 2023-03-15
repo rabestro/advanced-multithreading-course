@@ -30,7 +30,7 @@ public class ScanCommand {
             Dirs count: %,d
             Total size: %,d
             """.formatted(
-            fileVisitor.getFileCount(),
+            fileVisitor.getFileCount().get(),
             fileVisitor.getFolderCount(),
             fileVisitor.getTotalSize());
     }
