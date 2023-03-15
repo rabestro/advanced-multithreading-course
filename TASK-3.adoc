@@ -20,9 +20,6 @@ Once task is done, the statistics should be displayed in the output immediately.
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.0.4)
 
-2023-03-15T11:25:58.443+02:00  INFO 23071 --- [           main] com.epam.engx.jam.JamApplication         : Starting JamApplication using Java 17.0.6 with PID 23071 (/Users/jegors/Projects/EngX/advanced-multithreading-course/target/classes started by jegors in /Users/jegors/Projects/EngX/advanced-multithreading-course)
-2023-03-15T11:25:58.445+02:00  INFO 23071 --- [           main] com.epam.engx.jam.JamApplication         : No active profile set, falling back to 1 default profile: "default"
-2023-03-15T11:25:58.875+02:00  INFO 23071 --- [           main] com.epam.engx.jam.JamApplication         : Started JamApplication in 0.562 seconds (process running for 0.746)
 shell:>scan /Users
 2023-03-15T11:26:05.047+02:00  INFO 23071 --- [           main] Benchmark                                : scan (/Users)
 2023-03-15T11:27:18.949+02:00  INFO 23071 --- [           main] Benchmark                                : scan successful processed.
@@ -31,5 +28,44 @@ File count: 1,222,854
 Dirs count: 222,847
 Total size: 208,665,322,413
 
+shell:>
+----
+
+[source,text]
+----
+shell:>scan /usr
+2023-03-15T12:53:39.142+02:00  INFO 25413 --- [           main] Benchmark                                : scan (/usr)
+Processed: 0
+Processed: 16,391
+Processed: 28,500
+Processed: 41,795
+Processed: 55,967
+2023-03-15T12:53:41.671+02:00  INFO 25413 --- [           main] Benchmark                                : scan successful processed.
+2023-03-15T12:53:41.672+02:00  INFO 25413 --- [           main] Benchmark                                : scan exec time: 2,528ms
+File count: 72,323
+Dirs count: 7,784
+Total size: 12,254,622,073
+----
+
+[source,text]
+----
+shell:>scan /opt
+2023-03-15T13:04:40.757+02:00  INFO 25728 --- [           main] Benchmark                                : scan (/opt)
+Processed: 0
+c
+2023-03-15T13:04:43.077+02:00  INFO 25728 --- [           main] Benchmark                                : scan successful processed.
+2023-03-15T13:04:43.078+02:00  INFO 25728 --- [           main] Benchmark                                : scan exec time: 2,319ms
+File count: 53,523
+Dirs count: 3,222
+Total size: 2,665,879,489
+
+shell:>scan /opt
+2023-03-15T13:04:54.795+02:00  INFO 25728 --- [           main] Benchmark                                : scan (/opt)
+Processed: 0
+s
+Interrupting...
+2023-03-15T13:04:56.196+02:00  INFO 25728 --- [           main] Benchmark                                : scan successful processed.
+2023-03-15T13:04:56.197+02:00  INFO 25728 --- [           main] Benchmark                                : scan exec time: 1,399ms
+Scan interrupted.
 shell:>
 ----

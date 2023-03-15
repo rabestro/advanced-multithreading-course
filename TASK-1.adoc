@@ -5,3 +5,27 @@ Cost: 1 point.
  - Use `FJP` to calculate factorial.
  - Compare with the sequential implementation.
  - Use `BigInteger` to keep values.
+
+[source,text]
+----
+shell:>factorial 99999
+2023-03-15T12:11:49.840+02:00  INFO 24064 --- [           main] Benchmark                                : factorial (99999)
+2023-03-15T12:11:52.612+02:00  INFO 24064 --- [           main] Benchmark                                : factorial successful processed.
+2023-03-15T12:11:52.612+02:00  INFO 24064 --- [           main] Benchmark                                : factorial exec time: 2,771ms
+----
+
+[source,text]
+----
+shell:>factorial-parallel 99999
+2023-03-15T12:14:01.649+02:00  INFO 24284 --- [           main] Benchmark                                : factorialParallel (99999)
+2023-03-15T12:14:02.380+02:00  INFO 24284 --- [           main] Benchmark                                : factorialParallel successful processed.
+2023-03-15T12:14:02.382+02:00  INFO 24284 --- [           main] Benchmark                                : factorialParallel exec time: 730ms
+----
+
+[source,text]
+----
+shell:>factorial-task 99999
+2023-03-15T12:16:25.220+02:00  INFO 24284 --- [           main] Benchmark                                : factorialTask (99999)
+2023-03-15T12:16:25.336+02:00  INFO 24284 --- [           main] Benchmark                                : factorialTask successful processed.
+2023-03-15T12:16:25.336+02:00  INFO 24284 --- [           main] Benchmark                                : factorialTask exec time: 116ms
+----

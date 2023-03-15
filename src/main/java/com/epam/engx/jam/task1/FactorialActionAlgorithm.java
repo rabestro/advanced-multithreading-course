@@ -1,14 +1,18 @@
 package com.epam.engx.jam.task1;
 
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import java.math.BigInteger;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 
+
+@Setter
 @Component
 public final class FactorialActionAlgorithm extends AbstractFactorialAlgorithm {
-    private static final int THRESHOLD = 10;
+    private static final int DEFAULT_THRESHOLD = 10;
+    private int threshold = DEFAULT_THRESHOLD;
 
     @Override
     BigInteger factorialFromTwo(int number) {
@@ -31,7 +35,7 @@ public final class FactorialActionAlgorithm extends AbstractFactorialAlgorithm {
 
         @Override
         protected void compute() {
-            if (end - start <= THRESHOLD) {
+            if (end - start <= threshold) {
                 result = AbstractFactorialAlgorithm.computeDirectly(start, end);
                 return;
             }
