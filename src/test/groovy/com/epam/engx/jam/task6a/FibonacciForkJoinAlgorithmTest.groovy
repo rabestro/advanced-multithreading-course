@@ -10,8 +10,7 @@ class FibonacciForkJoinAlgorithmTest extends Specification {
     @Unroll('Fib(#index) = #fibonacci')
     def 'calculate fibonacci number using fork join framework'() {
         given:
-        def granularitySize = 10
-        def algorithm = new FibonacciForkJoinAlgorithm(granularitySize)
+        def algorithm = new FibonacciForkJoinAlgorithm()
 
         expect:
         algorithm.apply(index) == fibonacci

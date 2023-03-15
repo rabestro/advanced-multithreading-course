@@ -1,0 +1,35 @@
+= Task 3 - File Scanner via FJP
+
+Cost: 1 points.
+
+Create CLI application that scans a specified folder and provides detailed statistics:
+
+1. File count.
+2. Folder count.
+3. Size (sum of all files size) (similar like Windows context menu Properties). Since the folder may contain huge number of files the scanning process should be executed in a separate thread displaying an informational message with some simple animation like progress bar in CLI (up to you, but I'd like to see that task is in progress).
+
+Once task is done, the statistics should be displayed in the output immediately. Additionally, there should be ability to interrupt the process pressing some reserved key (for instance c). Of course, use Fork-Join Framework for implementation parallel scanning.
+
+[source,text]
+----
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.4)
+
+2023-03-15T11:25:58.443+02:00  INFO 23071 --- [           main] com.epam.engx.jam.JamApplication         : Starting JamApplication using Java 17.0.6 with PID 23071 (/Users/jegors/Projects/EngX/advanced-multithreading-course/target/classes started by jegors in /Users/jegors/Projects/EngX/advanced-multithreading-course)
+2023-03-15T11:25:58.445+02:00  INFO 23071 --- [           main] com.epam.engx.jam.JamApplication         : No active profile set, falling back to 1 default profile: "default"
+2023-03-15T11:25:58.875+02:00  INFO 23071 --- [           main] com.epam.engx.jam.JamApplication         : Started JamApplication in 0.562 seconds (process running for 0.746)
+shell:>scan /Users
+2023-03-15T11:26:05.047+02:00  INFO 23071 --- [           main] Benchmark                                : scan (/Users)
+2023-03-15T11:27:18.949+02:00  INFO 23071 --- [           main] Benchmark                                : scan successful processed.
+2023-03-15T11:27:18.949+02:00  INFO 23071 --- [           main] Benchmark                                : scan exec time: 73,901ms
+File count: 1,222,854
+Dirs count: 222,847
+Total size: 208,665,322,413
+
+shell:>
+----

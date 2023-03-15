@@ -1,0 +1,5 @@
+= Task 2 - Multithreading Sorting via FJP
+
+Cost: 1 points.
+
+- [ ] Implement Merge Sort or Quick Sort algorithm that sorts huge array of integers in parallel using Fork/Join framework.
