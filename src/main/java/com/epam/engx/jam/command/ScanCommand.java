@@ -7,6 +7,7 @@ import org.springframework.shell.standard.ShellMethod;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Scanner;
 
 @ShellComponent
 public class ScanCommand {
@@ -24,8 +25,19 @@ public class ScanCommand {
             }
         });
         thread.start();
+        var scanner = new Scanner(System.in);
+
+        while (thread.isAlive()) {
+            System.out.printf("Processed: %,d%n", fileVisitor.getFileCount().get());
+            if (scanner.hasNext() && scanner.next().equals("s")) {
+                thread.interrupt();
+                System.out.println("Interrupting...");
+            }
+            Thread.sleep(500);
+        }
         thread.join();
-        return """
+
+        return thread.isInterrupted() ? "Scan interrupted." : """
             File count: %,d
             Dirs count: %,d
             Total size: %,d
