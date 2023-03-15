@@ -1,7 +1,6 @@
 package com.epam.engx.jam.command;
 
 import com.epam.engx.jam.task3.CustomFileVisitor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
@@ -10,16 +9,22 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 @ShellComponent
-@RequiredArgsConstructor
 public class ScanCommand {
 
     @ShellMethod("Scans a specified folder and provides detailed statistics")
-    public String scan(String path) throws IOException {
+    public String scan(String path) throws InterruptedException {
         var dir = Paths.get(path);
         var fileVisitor = new CustomFileVisitor();
 
-        Files.walkFileTree(dir, fileVisitor);
-
+        var thread = new Thread(() -> {
+            try {
+                Files.walkFileTree(dir, fileVisitor);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        thread.start();
+        thread.join();
         return """
             File count: %,d
             Dirs count: %,d
