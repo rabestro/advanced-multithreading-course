@@ -6,6 +6,13 @@ import java.math.BigInteger;
 import java.util.stream.IntStream;
 
 abstract class AbstractFactorialAlgorithm implements FactorialFunction {
+    static BigInteger computeDirectly(int start, int end) {
+        return IntStream
+            .iterate(start, i -> i <= end, i -> ++i)
+            .mapToObj(BigInteger::valueOf)
+            .reduce(BigInteger.ONE, BigInteger::multiply);
+    }
+
     abstract BigInteger factorialFromTwo(int number);
 
     @Override
@@ -21,12 +28,5 @@ abstract class AbstractFactorialAlgorithm implements FactorialFunction {
         if (number < 0) {
             throw new IllegalArgumentException("the factorial is defined only for non-negative numbers");
         }
-    }
-
-    static BigInteger computeDirectly(int start, int end) {
-        return IntStream
-            .iterate(start, i -> i <= end, i -> ++i)
-            .mapToObj(BigInteger::valueOf)
-            .reduce(BigInteger.ONE, BigInteger::multiply);
     }
 }

@@ -6,7 +6,7 @@ import java.math.BigInteger;
 import java.util.stream.IntStream;
 
 @Component
-public final class FactorialParallelStream extends AbstractFactorialAlgorithm {
+public class FactorialParallelStream extends AbstractFactorialAlgorithm {
 
     @Override
     BigInteger factorialFromTwo(int number) {

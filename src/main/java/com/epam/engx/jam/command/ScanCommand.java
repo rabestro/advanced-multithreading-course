@@ -1,6 +1,9 @@
 package com.epam.engx.jam.command;
 
+import com.epam.engx.jam.printer.CustomFileVisitorPrinter;
 import com.epam.engx.jam.task3.CustomFileVisitor;
+import com.epam.engx.jam.validator.Folder;
+import lombok.RequiredArgsConstructor;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
@@ -10,10 +13,13 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 @ShellComponent
+@RequiredArgsConstructor
 public class ScanCommand {
+    private static final int TIMEOUT_MILLIS = 500;
+    private final CustomFileVisitorPrinter printer;
 
     @ShellMethod("Scans a specified folder and provides detailed statistics")
-    public String scan(String path) throws InterruptedException {
+    public String scan(@Folder String path) throws InterruptedException {
         var dir = Paths.get(path);
         var fileVisitor = new CustomFileVisitor();
 
@@ -33,17 +39,10 @@ public class ScanCommand {
                 thread.interrupt();
                 System.out.println("Interrupting...");
             }
-            Thread.sleep(500);
+            Thread.sleep(TIMEOUT_MILLIS);
         }
         thread.join();
 
-        return thread.isInterrupted() ? "Scan interrupted." : """
-            File count: %,d
-            Dirs count: %,d
-            Total size: %,d
-            """.formatted(
-            fileVisitor.getFileCount().get(),
-            fileVisitor.getFolderCount(),
-            fileVisitor.getTotalSize());
+        return thread.isInterrupted() ? "Scan interrupted." : printer.print(fileVisitor);
     }
 }
