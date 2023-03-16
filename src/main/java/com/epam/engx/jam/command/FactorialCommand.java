@@ -10,8 +10,6 @@ import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
 
-import java.math.BigInteger;
-
 @ShellComponent
 @RequiredArgsConstructor
 public class FactorialCommand {
@@ -20,32 +18,33 @@ public class FactorialCommand {
     private final FactorialActionAlgorithm actionAlgorithm;
     private final FactorialTaskAlgorithm taskAlgorithm;
     private final FactorialParallelStream parallelStream;
+    private final BigIntegerToStringConverter formatter;
 
     @ShellMethod("Factorial of non-negative integer by linear algorithm")
-    public BigInteger factorial(int number) {
-        return linearAlgorithm.apply(number);
+    public String factorial(int number) {
+        return formatter.convert(linearAlgorithm.apply(number));
     }
 
     @ShellMethod("Factorial calculation using class RecursiveAction")
-    public BigInteger factorialAction(
+    public String factorialAction(
         @Min(0) int number,
         @Min(2) @ShellOption(defaultValue = THRESHOLD) int threshold
     ) {
         actionAlgorithm.setThreshold(threshold);
-        return actionAlgorithm.apply(number);
+        return formatter.convert(actionAlgorithm.apply(number));
     }
 
     @ShellMethod("Factorial calculation using class RecursiveTask")
-    public BigInteger factorialTask(
+    public String factorialTask(
         @Min(0) int number,
         @Min(2) @ShellOption(defaultValue = THRESHOLD) int threshold
     ) {
         taskAlgorithm.setThreshold(threshold);
-        return taskAlgorithm.apply(number);
+        return formatter.convert(taskAlgorithm.apply(number));
     }
 
     @ShellMethod("Factorial calculation using parallel stream")
-    public BigInteger factorialParallel(@Min(0) int number) {
-        return parallelStream.apply(number);
+    public String factorialParallel(@Min(0) int number) {
+        return formatter.convert(parallelStream.apply(number));
     }
 }
