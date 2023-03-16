@@ -7,21 +7,20 @@ import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
 
-import java.math.BigInteger;
-
 @ShellComponent
 @RequiredArgsConstructor
 public class FibonacciCommand {
     private final FibonacciLinearAlgorithm linearAlgorithm;
     private final FibonacciForkJoinAlgorithm forkJoinAlgorithm;
+    private final BigIntegerToStringConverter formatter;
 
     @ShellMethod("Fibonacci sequence by linear algorithm")
-    public BigInteger fibonacci(int number) {
-        return linearAlgorithm.apply(number);
+    public String fibonacci(int number) {
+        return formatter.convert(linearAlgorithm.apply(number));
     }
 
     @ShellMethod("Fibonacci sequence by ForkJoin algorithm")
-    public BigInteger fibonacciTask(@ShellOption(defaultValue = "20") int number) {
-        return forkJoinAlgorithm.apply(number);
+    public String fibonacciTask(@ShellOption(defaultValue = "20") int number) {
+        return formatter.convert(forkJoinAlgorithm.apply(number));
     }
 }
