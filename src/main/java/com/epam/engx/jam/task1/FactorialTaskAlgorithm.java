@@ -9,7 +9,7 @@ import java.util.concurrent.RecursiveTask;
 
 @Setter
 @Component
-public final class FactorialTaskAlgorithm extends AbstractFactorialAlgorithm {
+public class FactorialTaskAlgorithm extends AbstractFactorialAlgorithm {
     private static final int DEFAULT_THRESHOLD = 10;
     private int threshold = DEFAULT_THRESHOLD;
 

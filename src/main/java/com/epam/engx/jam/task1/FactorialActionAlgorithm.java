@@ -10,7 +10,7 @@ import java.util.concurrent.RecursiveAction;
 
 @Setter
 @Component
-public final class FactorialActionAlgorithm extends AbstractFactorialAlgorithm {
+public class FactorialActionAlgorithm extends AbstractFactorialAlgorithm {
     private static final int DEFAULT_THRESHOLD = 10;
     private int threshold = DEFAULT_THRESHOLD;
 

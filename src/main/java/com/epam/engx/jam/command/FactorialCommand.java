@@ -1,5 +1,6 @@
 package com.epam.engx.jam.command;
 
+import com.epam.engx.jam.printer.BigIntegerPrinter;
 import com.epam.engx.jam.task1.FactorialActionAlgorithm;
 import com.epam.engx.jam.task1.FactorialLinearAlgorithm;
 import com.epam.engx.jam.task1.FactorialParallelStream;
@@ -18,11 +19,11 @@ public class FactorialCommand {
     private final FactorialActionAlgorithm actionAlgorithm;
     private final FactorialTaskAlgorithm taskAlgorithm;
     private final FactorialParallelStream parallelStream;
-    private final BigIntegerToStringConverter formatter;
+    private final BigIntegerPrinter printer;
 
     @ShellMethod("Factorial of non-negative integer by linear algorithm")
     public String factorial(int number) {
-        return formatter.convert(linearAlgorithm.apply(number));
+        return printer.print(linearAlgorithm.apply(number));
     }
 
     @ShellMethod("Factorial calculation using class RecursiveAction")
@@ -31,7 +32,7 @@ public class FactorialCommand {
         @Min(2) @ShellOption(defaultValue = THRESHOLD) int threshold
     ) {
         actionAlgorithm.setThreshold(threshold);
-        return formatter.convert(actionAlgorithm.apply(number));
+        return printer.print(actionAlgorithm.apply(number));
     }
 
     @ShellMethod("Factorial calculation using class RecursiveTask")
@@ -40,11 +41,11 @@ public class FactorialCommand {
         @Min(2) @ShellOption(defaultValue = THRESHOLD) int threshold
     ) {
         taskAlgorithm.setThreshold(threshold);
-        return formatter.convert(taskAlgorithm.apply(number));
+        return printer.print(taskAlgorithm.apply(number));
     }
 
     @ShellMethod("Factorial calculation using parallel stream")
     public String factorialParallel(@Min(0) int number) {
-        return formatter.convert(parallelStream.apply(number));
+        return printer.print(parallelStream.apply(number));
     }
 }

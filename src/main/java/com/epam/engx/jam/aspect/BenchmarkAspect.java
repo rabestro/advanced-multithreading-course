@@ -21,7 +21,7 @@ import static java.util.stream.Collectors.joining;
 @Aspect
 @Component
 public final class BenchmarkAspect {
-    private static final System.Logger LOG = System.getLogger("Benchmark");
+    private static final System.Logger LOG = System.getLogger(BenchmarkAspect.class.getSimpleName());
 
     private ZonedDateTime executionStart;
 

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import java.math.BigInteger;
 
 @Component
-public final class FactorialLinearAlgorithm extends AbstractFactorialAlgorithm {
+public class FactorialLinearAlgorithm extends AbstractFactorialAlgorithm {
 
     @Override
     public BigInteger factorialFromTwo(int number) {
